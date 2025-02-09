@@ -130,6 +130,25 @@ jobs:
           make
           make test
 
+  # AdvProg_L5_Assessment
+  check_AdvProg_L5:
+    needs: get_changed_files
+    runs-on: ubuntu-latest
+    name: Check AdvProg_L5-Assessment
+    if: ${{ contains(needs.get_changed_files.outputs.abc, 'AdvProg_L5-Assessment') }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: install package
+        run: |
+          sudo apt-get update
+          sudo apt install -y libcppunit-dev
+      - name: make & test
+        working-directory: ./AdvProg_L5-Assessment
+        run: |
+          chmod +x configure
+          make
+          make test
+
   # AdvProg_L6-Painter
   check_AdvProg_L6:
     needs: get_changed_files

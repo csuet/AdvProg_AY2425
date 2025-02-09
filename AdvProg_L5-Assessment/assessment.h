@@ -21,7 +21,9 @@ struct MistakeByWord {
          Returns:
             boolean true if this object is less than m
          */
-        return false;
+         bool res = false;
+         if(count < m) res = true;
+        return res;
     }
 };
 
